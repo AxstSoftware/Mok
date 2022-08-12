@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.6",
+  "compatibilityLevel": "JAVA_8",
+  "package": "io.github.axst.client.mixins",
+  "refmap": "mixins.mok.refmap.json",
+  "target": "@env(DEFAULT)",
+  "verbose": true,
+  "mixins": [
+    "GuiMainMenuMixins",
+    "MinecraftMixins",
+    "interfaces.IMinecraft",
+    "interfaces.IShaderGroup"
+  ]
+}

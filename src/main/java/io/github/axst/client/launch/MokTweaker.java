@@ -1,4 +1,4 @@
-package io.github.axst.launch;
+package io.github.axst.client.launch;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,31 +12,31 @@ import org.spongepowered.asm.mixin.MixinEnvironment.Side;
 import net.minecraft.launchwrapper.ITweaker;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 
-public class TCLTweaker implements ITweaker {
+public class MokTweaker implements ITweaker {
 
 	private static final List<String> args = new ArrayList<>();
 
 	@Override
 	public void acceptOptions(List<String> args, File gameDir, File assetsDir, String profile) {
-		TCLTweaker.args.addAll(args);
+		MokTweaker.args.addAll(args);
 		if(gameDir != null) {
-			TCLTweaker.args.add("--gameDir");
-			TCLTweaker.args.add(gameDir.getAbsolutePath());
+			MokTweaker.args.add("--gameDir");
+			MokTweaker.args.add(gameDir.getAbsolutePath());
 		}
 		if(assetsDir != null) {
-			TCLTweaker.args.add("--assetsDir");
-			TCLTweaker.args.add(assetsDir.getAbsolutePath());
+			MokTweaker.args.add("--assetsDir");
+			MokTweaker.args.add(assetsDir.getAbsolutePath());
 		}
 		if(profile != null) {
-			TCLTweaker.args.add("--version");
-			TCLTweaker.args.add(profile);
+			MokTweaker.args.add("--version");
+			MokTweaker.args.add(profile);
 		}
 	}
 
 	@Override
 	public void injectIntoClassLoader(LaunchClassLoader classLoader) {
 		MixinBootstrap.init();
-		Mixins.addConfiguration("mixins.tcl.json");
+		Mixins.addConfiguration("mixins.mok.json");
 
 		MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
 
@@ -54,7 +54,7 @@ public class TCLTweaker implements ITweaker {
 
 	@Override
 	public String[] getLaunchArguments() {
-		return TCLTweaker.args.toArray(new String[0]);
+		return MokTweaker.args.toArray(new String[0]);
 	}
 
 }

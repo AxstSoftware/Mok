@@ -15,8 +15,8 @@ apply plugin: 'net.minecraftforge.gradle.tweaker-client'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'java'
 
-String tweakerClass = 'io.github.axst.launch.TCLTweaker'
-String tweaker = 'tcl'
+String tweakerClass = 'io.github.axst.client.launch.MokTweaker'
+String tweaker = 'mok'
 
 compileJava {
 	sourceCompatibility = targetCompatibility = 8
