@@ -26,10 +26,10 @@ public abstract class UIScreen extends GuiScreen {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        renderScreen(mouseX, mouseY, mc.theWorld != null);
         components.forEach(e -> {
             if (e.isVisible()) e.drawComponent(mouseX, mouseY, mc.theWorld != null);
         });
-        renderScreen(mouseX, mouseY, mc.theWorld != null);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 }

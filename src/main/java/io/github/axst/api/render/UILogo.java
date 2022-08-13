@@ -24,13 +24,11 @@ public class UILogo extends UIComponent {
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glDepthMask(false);
         OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-        GL11.glColor3f(1f, 1f, 1f);
         mc.getTextureManager().bindTexture(getLogoLocation());
         Gui.drawModalRectWithCustomSizedTexture(getX(), getY(), 0.0f, 0.0f, getWidth(), getHeight(), getWidth(), getHeight());
         GL11.glDepthMask(true);
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glPopMatrix();
-        GL11.glColor3f(1f, 1f, 1f);
     }
 }
