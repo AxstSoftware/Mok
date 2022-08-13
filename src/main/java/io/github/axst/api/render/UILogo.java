@@ -1,11 +1,13 @@
 package io.github.axst.api.render;
 
 import io.github.axst.api.screen.UIComponent;
+import lombok.Getter;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
+@Getter
 public class UILogo extends UIComponent {
 
     public ResourceLocation logoLocation;
@@ -23,8 +25,8 @@ public class UILogo extends UIComponent {
         GL11.glDepthMask(false);
         OpenGlHelper.glBlendFunc(770, 771, 1, 0);
         GL11.glColor3f(1f, 1f, 1f);
-        mc.getTextureManager().bindTexture(logoLocation);
-        Gui.drawModalRectWithCustomSizedTexture(x, y, 0.0f, 0.0f, width, height, width, height);
+        mc.getTextureManager().bindTexture(getLogoLocation());
+        Gui.drawModalRectWithCustomSizedTexture(getX(), getY(), 0.0f, 0.0f, getWidth(), getHeight(), getWidth(), getHeight());
         GL11.glDepthMask(true);
         GL11.glDisable(3042);
         GL11.glEnable(2929);

@@ -1,8 +1,9 @@
 package io.github.axst.api.screen;
 
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
 
+@Getter
 public abstract class UIComponent {
 
     public int x;
@@ -10,9 +11,9 @@ public abstract class UIComponent {
     public int width;
     public int height;
 
-    public Minecraft mc;
+    public boolean visible = true;
 
-    public ScaledResolution sr;
+    public Minecraft mc;
 
     public UIComponent(int x, int y, int width, int height) {
         this.x = x;
@@ -20,7 +21,6 @@ public abstract class UIComponent {
         this.width = width;
         this.height = height;
         mc = Minecraft.getMinecraft();
-        sr = new ScaledResolution(mc);
     }
 
     public abstract void drawComponent(int mouseX, int mouseY, boolean shouldRender);
