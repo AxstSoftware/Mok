@@ -1,6 +1,7 @@
 package io.github.axst.client.minecraft.screen;
 
 import io.github.axst.api.render.UIButton;
+import io.github.axst.api.render.UIIConButton;
 import io.github.axst.api.render.UIRenderPictures;
 import io.github.axst.api.screen.UIScreen;
 import io.github.axst.util.BlurUtilities;
@@ -23,7 +24,8 @@ public class UIMainMenu extends UIScreen {
         this.addButton(
                 new UIButton(1, sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2, 170, 20, "SINGLEPLAYER"),
                 new UIButton(2, sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 + 25, 170, 20, "MULTIPLAYER"),
-                new UIButton(3, sr.getScaledWidth() / 2 - 30, sr.getScaledHeight() / 2 + 50, 70, 20, "QUIT")
+                new UIButton(3, sr.getScaledWidth() / 2 - 30, sr.getScaledHeight() / 2 + 50, 70, 20, "QUIT"),
+                new UIIConButton(4, sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 + 50, 20, 20, "cosmetics.png")
         );
     }
 
