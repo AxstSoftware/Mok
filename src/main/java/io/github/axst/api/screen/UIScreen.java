@@ -1,16 +1,17 @@
 package io.github.axst.api.screen;
 
-import com.google.common.collect.Lists;
 import net.minecraft.client.gui.GuiScreen;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public abstract class UIScreen extends GuiScreen {
 
-    public final List<UIComponent> components = Lists.newArrayList();
+    public final ArrayList<UIComponent> components = new ArrayList<>();
 
     public abstract void initComponent(int mouseX, int mouseY, boolean shouldRender);
+
+    public abstract void renderScreen(int mouseX, int mouseY, boolean shouldRender);
 
     @Override
     public void initGui() {
@@ -20,7 +21,7 @@ public abstract class UIScreen extends GuiScreen {
     }
 
     public void draw(UIComponent... components) {
-        this.components.addAll(Arrays.asList(components));
+        Collections.addAll(this.components, components);
     }
 
     @Override
@@ -28,6 +29,7 @@ public abstract class UIScreen extends GuiScreen {
         components.forEach(e -> {
             if (e.isVisible()) e.drawComponent(mouseX, mouseY, mc.theWorld != null);
         });
+        renderScreen(mouseX, mouseY, mc.theWorld != null);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 }

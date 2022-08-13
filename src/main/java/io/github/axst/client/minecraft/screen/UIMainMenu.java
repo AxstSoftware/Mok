@@ -19,10 +19,10 @@ public class UIMainMenu extends UIScreen {
     }
 
     @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+    public void renderScreen(int mouseX, int mouseY, boolean shouldRender) {
         mc.getTextureManager().bindTexture(new ResourceLocation("mok/background/bg.png"));
         Gui.drawModalRectWithCustomSizedTexture(-22 + (Mouse.getX() / 90), (Mouse.getY() * -1 / 90), 0, 0, width + 20, height + 18, width + 21f, height + 20f);
         BlurUtilities.blur(0, 0, mc.displayWidth, mc.displayHeight);
-        super.drawScreen(mouseX, mouseY, partialTicks);
     }
+
 }
