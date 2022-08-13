@@ -1,24 +1,33 @@
 package io.github.axst.api.render;
 
-import io.github.axst.api.screen.UIComponent;
 import lombok.Getter;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 @Getter
-public class UILogo extends UIComponent {
+public class UILogo {
+
+    public static final Minecraft mc = Minecraft.getMinecraft();
 
     public ResourceLocation logoLocation;
 
+    public int x;
+    public int y;
+    public int width;
+    public int height;
+
     public UILogo(int x, int y, int width, int height, String logoLocation) {
-        super(x, y, width, height);
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
         this.logoLocation = new ResourceLocation("mok/logo/" + logoLocation);
     }
 
-    @Override
-    public void drawComponent(int mouseX, int mouseY, boolean shouldRender) {
+    public void drawPicture() {
         GL11.glPushMatrix();
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glEnable(GL11.GL_BLEND);

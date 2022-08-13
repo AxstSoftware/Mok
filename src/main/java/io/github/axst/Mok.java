@@ -1,6 +1,7 @@
 package io.github.axst;
 
 import io.github.axst.api.fonts.CustomFontRenderer;
+import io.github.axst.client.minecraft.screen.SplashProgress;
 import io.github.axst.util.KeybindingsUtilities;
 import io.github.axst.util.LoggerUtilities;
 import lombok.Getter;
@@ -15,6 +16,13 @@ public class Mok {
     public void startClient() {
         LoggerUtilities.register("Mok");
         initFont();
+        SplashProgress.newMessage("test");
+        SplashProgress.newMessage("test2");
+        SplashProgress.newMessage("test3");
+        SplashProgress.newMessage("test4");
+        SplashProgress.newMessage("test5");
+        SplashProgress.newMessage("test6");
+        SplashProgress.newMessage("test7");
         new KeybindingsUtilities();
         LoggerUtilities.sendLog("Client Started", LoggerUtilities.LogLevel.INFO);
     }

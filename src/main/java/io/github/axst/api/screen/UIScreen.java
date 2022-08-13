@@ -12,9 +12,11 @@ public abstract class UIScreen extends GuiScreen {
 
     public ScaledResolution sr;
 
-    public abstract void initComponent(int mouseX, int mouseY, boolean shouldRender);
+    public void initComponent(int mouseX, int mouseY, boolean shouldRender) {
+    }
 
-    public abstract void renderScreen(int mouseX, int mouseY, boolean shouldRender);
+    public void renderScreen(int mouseX, int mouseY, boolean shouldRender) {
+    }
 
     @Override
     public void initGui() {

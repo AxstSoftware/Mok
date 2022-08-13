@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.GlStateManager;
 
 import static org.lwjgl.opengl.GL11.*;
 
-public class RenderUtils {
+public class RenderUtilities {
 
     public static void setColor(int color) {
         float a = (color >> 24 & 0xFF) / 255.0F;
