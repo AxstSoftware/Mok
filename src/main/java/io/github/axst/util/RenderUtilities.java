@@ -48,7 +48,7 @@ public class RenderUtilities {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
-    public static void drawRoundedOutline(float x, float y, float x1, float y1, float radius,float lineWidth, int color) {
+    public static void drawRoundedOutline(float x, float y, float x1, float y1, float radius, float lineWidth, int color) {
         glPushAttrib(0);
         glScaled(0.5D, 0.5D, 0.5D);
         x *= 2.0D;

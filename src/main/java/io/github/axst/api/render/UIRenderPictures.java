@@ -9,8 +9,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 
 @Getter
-public class UILogo {
-
+public class UIRenderPictures {
     public static final Minecraft mc = Minecraft.getMinecraft();
 
     public ResourceLocation logoLocation;
@@ -20,12 +19,12 @@ public class UILogo {
     public int width;
     public int height;
 
-    public UILogo(int x, int y, int width, int height, String logoLocation) {
+    public UIRenderPictures(int x, int y, int width, int height, String logoLocation) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.logoLocation = new ResourceLocation("mok/logo/" + logoLocation);
+        this.logoLocation = new ResourceLocation("mok/" + logoLocation);
     }
 
     public void drawPicture() {

@@ -1,7 +1,7 @@
 package io.github.axst.client.minecraft.screen;
 
 import io.github.axst.api.fonts.CustomFontRenderer;
-import io.github.axst.api.render.UILogo;
+import io.github.axst.api.render.UIRenderPictures;
 import io.github.axst.util.RenderUtilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -124,7 +124,7 @@ public class SplashProgress {
         RenderUtilities.drawRoundedOutline((int) x - 40, (int) y - 76, (int) (x + width) + 40, (int) (y - height + 15), 9, 1, new Color(0, 0, 0, 255).getRGB());
         String step = "Mods (" + PROGRESS + "/" + MAX + ")";
         ufr.drawString(step, (sr.getScaledWidth() >> 1) + 20 - ufr.getWidth(step), sr.getScaledHeight() - 145, new Color(255, 255, 255).getRGB());
-        new UILogo(sr.getScaledWidth() / 2 - 85, sr.getScaledHeight() / 2 - 75, 64, 64, "logo.png").drawPicture();
+        new UIRenderPictures(sr.getScaledWidth() / 2 - 85, sr.getScaledHeight() / 2 - 75, 64, 64, "logo/logo.png").drawPicture();
         RenderUtilities.drawRoundedRect(x - 40, y - 75.5f, x + loadedWidth + 40, y - height + 14.5f, 9, new Color(255, 255, 255).getRGB());
         ufr.drawString(CURRENT, (sr.getScaledWidth() >> 1) + 35 - ufr.getWidth(CURRENT), sr.getScaledHeight() - 130, new Color(255, 255, 255).getRGB());
         clearMenu();

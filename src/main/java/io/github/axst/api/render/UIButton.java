@@ -9,8 +9,7 @@ import org.lwjgl.opengl.GL13;
 
 import java.awt.*;
 
-import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
-import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.*;
 
 public class UIButton extends GuiButton {
 
