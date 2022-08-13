@@ -21,9 +21,12 @@ public class UIButton extends UIComponent {
 
     @Override
     public void drawComponent(int mouseX, int mouseY, boolean shouldRender) {
-        this.hovered = (mouseX >= this.getX() && mouseY >= this.getY() && mouseX < this.getX() + this.getWidth() && mouseY < this.getY() + this.getHeight());
-        RenderUtils.drawRoundedOutline(this.getX(), this.getY(), this.getX() + this.getWidth(), this.getY() + this.getHeight(), 5, 2, new Color(164, 172, 180, 255).getRGB());
+        this.hovered = mouseX >= this.getX() &&
+                mouseY >= this.getY() &&
+                mouseX < this.getX() + this.getWidth() &&
+                mouseY < this.getY() + this.getHeight();
         RenderUtils.drawRoundedRect(this.getX(), this.getY(), this.getX() + this.getWidth(), this.getY() + this.getHeight(), 5, new Color(164, 172, 180, 64).getRGB());
-        mc.fontRendererObj.drawString(this.getText(), this.getX() + (this.getWidth() >> 1), this.getY() + ((this.getHeight() - 8) >> 1) + 4, -1);
+        RenderUtils.drawRoundedOutline(this.getX(), this.getY(), this.getX() + this.getWidth(), this.getY() + this.getHeight(), 5, 2, new Color(164, 172, 180, 255).getRGB());
+        mc.fontRendererObj.drawString(this.getText(), this.getX() + (this.getWidth() - mc.fontRendererObj.getStringWidth(this.getText())) / 2, this.getY() + (this.getHeight() - 8) / 2, -1);
     }
 }
