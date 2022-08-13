@@ -14,12 +14,12 @@ public abstract class UIScreen extends GuiScreen {
 
     @Override
     public void initGui() {
+        this.components.clear();
         initComponent(mc.mouseHelper.deltaX, mc.mouseHelper.deltaY, mc.theWorld != null);
         super.initGui();
     }
 
     public void draw(UIComponent... components) {
-        this.components.clear();
         this.components.addAll(Arrays.asList(components));
     }
 
