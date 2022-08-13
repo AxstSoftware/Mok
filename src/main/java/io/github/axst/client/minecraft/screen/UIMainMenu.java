@@ -14,13 +14,13 @@ import org.lwjgl.input.Mouse;
 
 import java.util.Collections;
 
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.GL_SMOOTH;
+import static org.lwjgl.opengl.GL11.glShadeModel;
 
 public class UIMainMenu extends UIScreen {
 
     @Override
     public void initComponent(int mouseX, int mouseY, boolean shouldRender) {
-
         this.addButton(
                 new UIButton(1, sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2, 170, 20, "SINGLEPLAYER"),
                 new UIButton(2, sr.getScaledWidth() / 2 - 80, sr.getScaledHeight() / 2 + 25, 170, 20, "MULTIPLAYER"),
@@ -41,10 +41,12 @@ public class UIMainMenu extends UIScreen {
     @Override
     protected void actionPerformed(GuiButton button) {
         switch (button.id) {
-            case 1: mc.displayGuiScreen(new GuiSelectWorld(this));
-            break;
-            case 2: mc.displayGuiScreen(new GuiMultiplayer(this));
-            break;
+            case 1:
+                mc.displayGuiScreen(new GuiSelectWorld(this));
+                break;
+            case 2:
+                mc.displayGuiScreen(new GuiMultiplayer(this));
+                break;
         }
     }
 
