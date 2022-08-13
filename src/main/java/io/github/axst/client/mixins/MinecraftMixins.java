@@ -5,9 +5,7 @@ import io.github.axst.client.minecraft.screen.SplashProgress;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureManager;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Minecraft.class)
@@ -27,6 +25,11 @@ public class MinecraftMixins {
     @Inject(method = "shutdownMinecraftApplet", at = @At("RETURN"))
     public void injectShutdownMinecraftApplet(CallbackInfo ci) {
         Mok.getInstance().stopClient();
+    }
+
+    @ModifyConstant(method = "getLimitFramerate", constant = @Constant(intValue = 30))
+    public int getLimitFramerate(int constant) {
+        return 144;
     }
 
 }
