@@ -1,32 +1,25 @@
 package io.github.axst.api.render;
 
-import io.github.axst.api.screen.UIComponent;
 import io.github.axst.util.RenderUtils;
-import lombok.Getter;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 
 import java.awt.*;
 
-@Getter
-public class UIButton extends UIComponent {
-
-    public int buttonId;
-    public String text;
-    public boolean hovered;
+public class UIButton extends GuiButton {
 
     public UIButton(int buttonId, int x, int y, int width, int height, String text) {
-        super(x, y, width, height);
-        this.buttonId = buttonId;
-        this.text = text;
+        super(buttonId, x, y, width, height, text);
     }
 
     @Override
-    public void drawComponent(int mouseX, int mouseY, boolean shouldRender) {
-        this.hovered = mouseX >= this.getX() &&
-                mouseY >= this.getY() &&
-                mouseX < this.getX() + this.getWidth() &&
-                mouseY < this.getY() + this.getHeight();
-        RenderUtils.drawRoundedRect(this.getX(), this.getY(), this.getX() + this.getWidth(), this.getY() + this.getHeight(), 5, new Color(164, 172, 180, 64).getRGB());
-        RenderUtils.drawRoundedOutline(this.getX(), this.getY(), this.getX() + this.getWidth(), this.getY() + this.getHeight(), 5, 2, new Color(164, 172, 180, 255).getRGB());
-        mc.fontRendererObj.drawString(this.getText(), this.getX() + (this.getWidth() - mc.fontRendererObj.getStringWidth(this.getText())) / 2, this.getY() + (this.getHeight() - 8) / 2, -1);
+    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+        this.hovered = mouseX >= this.xPosition &&
+                mouseY >= this.xPosition &&
+                mouseX < this.xPosition + this.width &&
+                mouseY < this.yPosition + this.height;
+        RenderUtils.drawRoundedRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 5, new Color(164, 172, 180, 64).getRGB());
+        RenderUtils.drawRoundedOutline(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 5, 2, new Color(164, 172, 180, 255).getRGB());
+        mc.fontRendererObj.drawString(this.displayString, this.xPosition + (this.width - mc.fontRendererObj.getStringWidth(this.displayString)) / 2, this.yPosition + (this.height - 8) / 2, -1);
     }
 }
