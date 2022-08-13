@@ -55,6 +55,7 @@ configurations {
 dependencies {
 	compileOnly('org.projectlombok:lombok:1.18.24')
 	annotationProcessor('org.projectlombok:lombok:1.18.24')
+	implementation('org.slick2d:slick2d-core:1.0.2')
 	tclmdk('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
 		exclude module: 'launchwrapper'
 		exclude module: 'guava'

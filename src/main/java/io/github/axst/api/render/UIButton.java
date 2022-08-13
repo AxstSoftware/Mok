@@ -1,8 +1,10 @@
 package io.github.axst.api.render;
 
+import io.github.axst.Mok;
 import io.github.axst.util.RenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
@@ -20,6 +22,8 @@ public class UIButton extends GuiButton {
                 mouseY < this.yPosition + this.height;
         RenderUtils.drawRoundedRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 5, new Color(164, 172, 180, 64).getRGB());
         RenderUtils.drawRoundedOutline(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 5, 2, new Color(164, 172, 180, 255).getRGB());
-        mc.fontRendererObj.drawString(this.displayString, this.xPosition + (this.width - mc.fontRendererObj.getStringWidth(this.displayString)) / 2, this.yPosition + (this.height - 8) / 2, -1);
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
+        GL11.glEnable(GL11.GL_BLEND);
+        Mok.getInstance().font.drawString(this.displayString, this.xPosition + ((this.width - mc.fontRendererObj.getStringWidth(this.displayString)) >> 1), this.yPosition + ((this.height - 8) >> 1), new Color(255, 255, 255).getRGB());
     }
 }
