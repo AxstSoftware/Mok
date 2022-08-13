@@ -10,7 +10,7 @@ Dont compile this client.
 
 ## Contributing
 
-Ways to contribute to TCL-Java:
+Ways to contribute to Mok:
 
 * Making an fork of the project
 * Sharing this repo
