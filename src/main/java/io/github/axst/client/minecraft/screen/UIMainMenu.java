@@ -11,6 +11,9 @@ import org.lwjgl.input.Mouse;
 
 import java.util.Collections;
 
+import static org.lwjgl.opengl.GL11.GL_SMOOTH;
+import static org.lwjgl.opengl.GL11.glShadeModel;
+
 public class UIMainMenu extends UIScreen {
 
     @Override
@@ -26,6 +29,7 @@ public class UIMainMenu extends UIScreen {
     @Override
     public void renderScreen(int mouseX, int mouseY, boolean shouldRender) {
         mc.getTextureManager().bindTexture(new ResourceLocation("mok/background/bg.png"));
+        glShadeModel(GL_SMOOTH);
         Gui.drawModalRectWithCustomSizedTexture(-22 + (Mouse.getX() / 90), (Mouse.getY() * -1 / 90), 0, 0, width + 20, height + 18, width + 21f, height + 20f);
         BlurUtilities.blur(0, 0, mc.displayWidth, mc.displayHeight);
         new UILogo(this.width / 2 - 30, this.height / 2 - 65, 64, 64, "logo.png").drawPicture();
