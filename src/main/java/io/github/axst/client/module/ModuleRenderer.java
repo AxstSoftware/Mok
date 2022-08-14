@@ -1,17 +1,19 @@
 package io.github.axst.client.module;
 
-import io.github.axst.api.screen.DraggableComponent;
+import io.github.axst.api.screen.UIDraggableComponent;
+import lombok.Getter;
 
 public abstract class ModuleRenderer extends Module {
 
-    private DraggableComponent component;
+    @Getter
+    private UIDraggableComponent component;
 
     protected ModuleRenderer(String name) {
         super(name);
     }
 
     public void initComponent(int x, int y) {
-        component = new DraggableComponent(x, y, getWidth(), getHeight());
+        component = new UIDraggableComponent(x, y, getWidth(), getHeight());
     }
 
     public abstract void drawOnScreen();

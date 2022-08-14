@@ -1,6 +1,7 @@
 package io.github.axst.client.mixins;
 
 import io.github.axst.Mok;
+import io.github.axst.api.events.EventTick;
 import io.github.axst.client.minecraft.screen.SplashProgress;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -25,6 +26,12 @@ public class MinecraftMixins {
     @Inject(method = "shutdownMinecraftApplet", at = @At("RETURN"))
     public void injectShutdownMinecraftApplet(CallbackInfo ci) {
         Mok.getInstance().stopClient();
+    }
+
+    @Inject(method = "runTick", at = @At("HEAD"))
+    public void injectClientTick(CallbackInfo ci) {
+        EventTick event = new EventTick();
+        Mok.getInstance().getBus().post(event);
     }
 
     @ModifyConstant(method = "getLimitFramerate", constant = @Constant(intValue = 30))

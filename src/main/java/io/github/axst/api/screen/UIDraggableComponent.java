@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.lwjgl.input.Mouse;
 
 @Getter
-public class DraggableComponent {
+public class UIDraggableComponent {
 
     public final int widthIn;
     public final int heightIn;
@@ -14,7 +14,7 @@ public class DraggableComponent {
     private int lastY;
     private boolean draggingModule;
 
-    public DraggableComponent(int x, int y, int widthIn, int heightIn) {
+    public UIDraggableComponent(int x, int y, int widthIn, int heightIn) {
         this.x = x;
         this.y = y;
         this.widthIn = widthIn;
