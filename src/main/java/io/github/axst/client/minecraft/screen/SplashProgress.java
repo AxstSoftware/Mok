@@ -19,11 +19,13 @@ import java.awt.*;
  */
 public class SplashProgress {
 
-    public static Minecraft mc = Minecraft.getMinecraft();
-    private static int PROGRESS = 0;
-    private static String CURRENT = "";
+    public static final Minecraft mc = Minecraft.getMinecraft();
+    private static int progress = 0;
+    private static String current = "";
     private static ResourceLocation splash;
     private static CustomFontRenderer ufr;
+
+    private SplashProgress() {}
 
     public static void update() {
         if (mc == null || mc.getLanguageManager() == null) {
@@ -33,8 +35,8 @@ public class SplashProgress {
     }
 
     public static void newMessage(String givenText) {
-        ++PROGRESS;
-        CURRENT = givenText;
+        ++progress;
+        current = givenText;
         update();
     }
 
@@ -117,16 +119,16 @@ public class SplashProgress {
         GlStateManager.resetColor();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
-        int MAX = 7;
-        float loadedWidth = width * ((float) PROGRESS / (float) MAX);
+        int max = 7;
+        float loadedWidth = width * ((float) progress / max);
 
         RenderUtilities.drawRoundedRect(x - 40, y - 76, x + width + 40, y - height + 15, 9, new Color(80, 80, 80, 221).getRGB());
         RenderUtilities.drawRoundedOutline((int) x - 40, (int) y - 76, (int) (x + width) + 40, (int) (y - height + 15), 9, 1, new Color(0, 0, 0, 255).getRGB());
-        String step = "Mods (" + PROGRESS + "/" + MAX + ")";
+        String step = "Mods (" + progress + "/" + max + ")";
         ufr.drawString(step, (sr.getScaledWidth() >> 1) + 20 - ufr.getWidth(step), sr.getScaledHeight() - 145, new Color(255, 255, 255).getRGB());
         new UIRenderPictures(sr.getScaledWidth() / 2 - 85, sr.getScaledHeight() / 2 - 75, 64, 64, "logo/logo.png").drawPicture();
         RenderUtilities.drawRoundedRect(x - 40, y - 75.5f, x + loadedWidth + 40, y - height + 14.5f, 9, new Color(255, 255, 255).getRGB());
-        ufr.drawString(CURRENT, (sr.getScaledWidth() >> 1) + 35 - ufr.getWidth(CURRENT), sr.getScaledHeight() - 130, new Color(255, 255, 255).getRGB());
+        ufr.drawString(current, (sr.getScaledWidth() >> 1) + 35 - ufr.getWidth(current), sr.getScaledHeight() - 130, new Color(255, 255, 255).getRGB());
         clearMenu();
     }
 }

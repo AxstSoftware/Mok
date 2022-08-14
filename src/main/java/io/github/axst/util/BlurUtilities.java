@@ -19,6 +19,8 @@ public class BlurUtilities {
     private static Framebuffer buffer;
     private static ShaderGroup blurShader;
 
+    private BlurUtilities() {}
+
     public static void initFboAndShader() {
         Minecraft mc = Minecraft.getMinecraft();
         try {

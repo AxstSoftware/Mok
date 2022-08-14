@@ -6,6 +6,9 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class RenderUtilities {
 
+    private RenderUtilities() {
+    }
+
     public static void setColor(int color) {
         float a = (color >> 24 & 0xFF) / 255.0F;
         float r = (color >> 16 & 0xFF) / 255.0F;

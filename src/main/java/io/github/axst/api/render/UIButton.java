@@ -31,6 +31,6 @@ public class UIButton extends GuiButton {
         RenderUtilities.drawRoundedOutline(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 5, 2, new Color(164, 172, 180, 255).getRGB());
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        Mok.getInstance().font.drawString(this.displayString, this.xPosition + ((this.width - mc.fontRendererObj.getStringWidth(this.displayString)) >> 1), this.yPosition + ((this.height - 8) >> 1), new Color(255, 255, 255).getRGB());
+        Mok.getInstance().getFont().drawString(this.displayString, this.xPosition + ((this.width - mc.fontRendererObj.getStringWidth(this.displayString)) >> 1), this.yPosition + ((this.height - 8) >> 1), new Color(255, 255, 255).getRGB());
     }
 }

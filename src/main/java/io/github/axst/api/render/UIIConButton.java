@@ -15,7 +15,7 @@ import java.awt.*;
 @Getter
 public class UIIConButton extends GuiButton {
 
-    public ResourceLocation location;
+    private final ResourceLocation location;
 
     public UIIConButton(int buttonId, int x, int y, int widthIn, int heightIn, String iconName) {
         super(buttonId, x, y, widthIn, heightIn, "");
@@ -37,7 +37,7 @@ public class UIIConButton extends GuiButton {
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glEnable(GL11.GL_COLOR_MATERIAL);
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1F);
-        Gui.drawModalRectWithCustomSizedTexture(this.xPosition + (this.width - 12) / 2, this.yPosition + (this.height - 12) / 2, 0, 0, 12, 12, (float) 12, (float) 12);
+        Gui.drawModalRectWithCustomSizedTexture(this.xPosition + (this.width - 12) / 2, this.yPosition + (this.height - 12) / 2, 0, 0, 12, 12, 12, 12);
         GL11.glDepthMask(true);
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glEnable(GL11.GL_DEPTH_TEST);

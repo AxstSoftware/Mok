@@ -1,10 +1,12 @@
 package io.github.axst.client.minecraft.screen;
 
+import io.github.axst.Mok;
 import io.github.axst.api.render.UIButton;
 import io.github.axst.api.render.UIIConButton;
 import io.github.axst.api.render.UIRenderPictures;
 import io.github.axst.api.screen.UIScreen;
 import io.github.axst.util.BlurUtilities;
+import io.github.axst.util.LoggerUtilities;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMultiplayer;
@@ -46,6 +48,9 @@ public class UIMainMenu extends UIScreen {
                 break;
             case 2:
                 mc.displayGuiScreen(new GuiMultiplayer(this));
+                break;
+            default:
+                Mok.getInstance().getLogger().sendLog("This button id doesn't exists", LoggerUtilities.LogLevel.WARN);
                 break;
         }
     }

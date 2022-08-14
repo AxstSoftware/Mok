@@ -10,11 +10,13 @@ public class Mok {
 
     @Getter
     private static final Mok instance = new Mok();
-
-    public CustomFontRenderer font;
+    @Getter
+    private final LoggerUtilities logger = new LoggerUtilities();
+    @Getter
+    private CustomFontRenderer font;
 
     public void startClient() {
-        LoggerUtilities.register("Mok");
+        logger.register("Mok");
         initFont();
         SplashProgress.newMessage("test");
         SplashProgress.newMessage("test2");
@@ -24,7 +26,7 @@ public class Mok {
         SplashProgress.newMessage("test6");
         SplashProgress.newMessage("test7");
         new KeybindingsUtilities();
-        LoggerUtilities.sendLog("Client Started", LoggerUtilities.LogLevel.INFO);
+        getLogger().sendLog("Client Started", LoggerUtilities.LogLevel.INFO);
     }
 
     public void initFont() {
@@ -32,6 +34,6 @@ public class Mok {
     }
 
     public void stopClient() {
-
+        getLogger().sendLog("Client Stopped", LoggerUtilities.LogLevel.INFO);
     }
 }

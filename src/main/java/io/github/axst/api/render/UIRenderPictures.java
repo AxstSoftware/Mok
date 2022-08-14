@@ -12,12 +12,12 @@ import org.lwjgl.opengl.GL13;
 public class UIRenderPictures {
     public static final Minecraft mc = Minecraft.getMinecraft();
 
-    public ResourceLocation logoLocation;
+    private final ResourceLocation logoLocation;
 
-    public int x;
-    public int y;
-    public int width;
-    public int height;
+    private final int x;
+    private final int y;
+    private final int width;
+    private final int height;
 
     public UIRenderPictures(int x, int y, int width, int height, String logoLocation) {
         this.x = x;

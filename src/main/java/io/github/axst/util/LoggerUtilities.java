@@ -8,18 +8,17 @@ import java.util.Date;
 public class LoggerUtilities {
 
     @Getter
-    private static final Date data = new Date();
+    private final Date data = new Date();
     @Getter
-    private static SimpleDateFormat format;
+    private final SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
     @Getter
-    private static String loggerName;
+    private String loggerName;
 
-    public static void register(String name) {
+    public void register(String name) {
         loggerName = name;
-        format = new SimpleDateFormat("HH:mm:ss");
     }
 
-    public static void sendLog(String message, LogLevel logLevel) {
+    public void sendLog(String message, LogLevel logLevel) {
         if (getLoggerName() != null) {
             switch (logLevel) {
                 case INFO:
@@ -33,7 +32,7 @@ public class LoggerUtilities {
                     break;
             }
         } else {
-            System.out.println("[" + getFormat().format(getData()) + "] " + "[LimeeNull] [" + Thread.currentThread().getName() + "/FATAL]: There are no name for the logger.");
+            System.out.println("[" + getFormat().format(getData()) + "] " + "[Null] [" + Thread.currentThread().getName() + "/FATAL]: There are no name for the logger.");
         }
     }
 

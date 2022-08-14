@@ -1,21 +1,23 @@
 package io.github.axst.api.screen;
 
 import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 
 @Getter
 public abstract class UIComponent {
 
-    public int x;
-    public int y;
-    public int width;
-    public int height;
+    private final int x;
+    private final int y;
+    private final int width;
+    private final int height;
 
+    @Setter
     public boolean visible = true;
 
-    public Minecraft mc;
+    private final Minecraft mc;
 
-    public UIComponent(int x, int y, int width, int height) {
+    protected UIComponent(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
