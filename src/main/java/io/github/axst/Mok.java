@@ -13,32 +13,35 @@ import io.github.nevalackin.homoBus.annotations.EventLink;
 import io.github.nevalackin.homoBus.bus.Bus;
 import io.github.nevalackin.homoBus.bus.impl.EventBus;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import net.minecraft.client.Minecraft;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+@Getter
 public class Mok {
 
     @Getter
-    private static final Mok instance = new Mok();
-    @Getter
-    private final LoggerUtilities logger = new LoggerUtilities();
-    @Getter
+    public static final Mok instance = new Mok();
     private final Bus<Event> bus = new EventBus<>();
-    @Getter
-    private CustomFontRenderer font;
-    @Getter
-    private ModuleManager moduleManager;
-
+    private final LoggerUtilities logger = new LoggerUtilities();
     @EventLink
     public Listener<EventTick> someTest = event -> {
         if (KeybindingsUtilities.TEST.isKeyDown()) {
-           Minecraft.getMinecraft().displayGuiScreen(new UIHudScreen());
+            Minecraft.getMinecraft().displayGuiScreen(new UIHudScreen());
         }
     };
+    protected String name = "Mok";
+    protected String version = "1.8.9";
+    private CustomFontRenderer font;
+    private ModuleManager moduleManager;
 
     public void startClient() {
+        bus.subscribe(instance);
+        initFont();
         logger.register("Mok");
         moduleManager = new ModuleManager();
-        initFont();
         SplashProgress.newMessage("test");
         SplashProgress.newMessage("test2");
         SplashProgress.newMessage("test3");
@@ -47,7 +50,6 @@ public class Mok {
         SplashProgress.newMessage("test6");
         SplashProgress.newMessage("test7");
         new KeybindingsUtilities();
-        bus.subscribe(instance);
         getLogger().sendLog("Client Started", LoggerUtilities.LogLevel.INFO);
     }
 
@@ -55,8 +57,17 @@ public class Mok {
         font = new CustomFontRenderer("font", 15.0F);
     }
 
+    @SneakyThrows
+    public String readCommit() {
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec("git rev-parse --verify --short HEAD");
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        return reader.readLine();
+    }
+
     public void stopClient() {
         bus.unsubscribe(instance);
         getLogger().sendLog("Client Stopped", LoggerUtilities.LogLevel.INFO);
     }
+
 }
