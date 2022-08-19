@@ -22,7 +22,7 @@ public class Module {
 
     public Module(String name) {
         this.name = name;
-        enabled = true;
+        this.enabled = true;
     }
 
     public void addSettings(Settings... addSettings) {
