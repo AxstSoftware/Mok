@@ -3,20 +3,20 @@ package io.github.axst.api.screen;
 import io.github.axst.Mok;
 import io.github.axst.client.module.Module;
 import io.github.axst.client.module.ModuleRenderer;
+import io.github.axst.util.BlurUtilities;
 import io.github.axst.util.RenderUtilities;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 
 import java.awt.*;
 
-public class UIHudScreen extends GuiScreen {
+public class UIHudScreen extends UIScreen {
     private int lastDraggedMod = 0;
 
     @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+    public void renderScreen(int mouseX, int mouseY, boolean shouldRender) {
         drawBackground();
-
+        BlurUtilities.blur(0, 0, Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
         boolean doDrag = true;
 
         float lineWidth = new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor() / 1.4F;
@@ -37,7 +37,6 @@ public class UIHudScreen extends GuiScreen {
                 this.lastDraggedMod = module.hashCode();
             }
         }
-        super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     public void drawBackground() {

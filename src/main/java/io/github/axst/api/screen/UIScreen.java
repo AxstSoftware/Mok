@@ -24,7 +24,6 @@ public abstract class UIScreen extends GuiScreen {
     @Override
     public void initGui() {
         this.components.clear();
-        mc.gameSettings.guiScale = 2;
         sr = new ScaledResolution(mc);
         initComponent(mc.mouseHelper.deltaX, mc.mouseHelper.deltaY, mc.theWorld != null);
         super.initGui();
