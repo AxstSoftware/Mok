@@ -37,7 +37,7 @@ public class UIRenderPictures {
         mc.getTextureManager().bindTexture(getLogoLocation());
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glEnable(GL11.GL_COLOR_MATERIAL);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 0.4F);
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0F);
         Gui.drawModalRectWithCustomSizedTexture(getX(), getY(), 0.0f, 0.0f, getWidth(), getHeight(), getWidth(), getHeight());
         GL11.glDepthMask(true);
         GL11.glDisable(GL11.GL_BLEND);

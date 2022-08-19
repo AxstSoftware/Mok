@@ -4,6 +4,7 @@ import io.github.axst.api.events.Event;
 import io.github.axst.api.events.EventTick;
 import io.github.axst.api.fonts.CustomFontRenderer;
 import io.github.axst.api.screen.UIHudScreen;
+import io.github.axst.api.screen.UINotification;
 import io.github.axst.client.minecraft.screen.SplashProgress;
 import io.github.axst.client.module.ModuleManager;
 import io.github.axst.util.KeybindingsUtilities;
@@ -31,6 +32,12 @@ public class Mok {
         if (KeybindingsUtilities.TEST.isKeyDown()) {
             Minecraft.getMinecraft().displayGuiScreen(new UIHudScreen());
             getLogger().sendLogMinecraft("test", LoggerUtilities.LogLevel.INFO);
+            new UINotification.Builder()
+                    .setName("Test")
+                    .setDescription("Some Test")
+                    .setNotifications(UINotification.NotificationType.INFO)
+                    .setTime(400)
+                    .build();
         }
     };
     protected String name = "Mok";
