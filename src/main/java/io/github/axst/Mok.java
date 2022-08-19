@@ -30,6 +30,7 @@ public class Mok {
     public Listener<EventTick> someTest = event -> {
         if (KeybindingsUtilities.TEST.isKeyDown()) {
             Minecraft.getMinecraft().displayGuiScreen(new UIHudScreen());
+            getLogger().sendLogMinecraft("test", LoggerUtilities.LogLevel.INFO);
         }
     };
     protected String name = "Mok";
