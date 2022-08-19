@@ -3,11 +3,11 @@ package io.github.axst.client.module.misc;
 import io.github.axst.client.module.ModuleRenderer;
 import net.minecraft.client.Minecraft;
 
-public class FPS extends ModuleRenderer {
+public class FPS2 extends ModuleRenderer {
 
     protected String fpsPrefix = "FPS: ";
 
-    public FPS() {
+    public FPS2() {
         super("FPS");
         initComponent(100, 100);
     }

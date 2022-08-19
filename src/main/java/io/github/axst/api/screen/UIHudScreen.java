@@ -3,7 +3,10 @@ package io.github.axst.api.screen;
 import io.github.axst.Mok;
 import io.github.axst.client.module.Module;
 import io.github.axst.client.module.ModuleRenderer;
+import io.github.axst.util.RenderUtilities;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
 
 import java.awt.*;
 
@@ -16,11 +19,15 @@ public class UIHudScreen extends GuiScreen {
 
         boolean doDrag = true;
 
+        float lineWidth = new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor() / 1.4F;
+        RenderUtilities.drawOutline(3, 3, this.width - 6, this.height - 6, (int) lineWidth, new Color(255, 70, 70, 100).getRGB());
+
         for (Module module : Mok.getInstance().getModuleManager().getModules()) {
             if (module.isEnabled() && module instanceof ModuleRenderer) {
-                ((ModuleRenderer) module).drawInGame(mouseX, mouseY);
-                if (module.hashCode() == this.lastDraggedMod && ((ModuleRenderer) module).getComponent().isDraggingModule(mouseX, mouseY))
+                ((ModuleRenderer) module).drawOnScreen(mouseX, mouseY);
+                if (module.hashCode() == this.lastDraggedMod && ((ModuleRenderer) module).getComponent().isDraggingModule(mouseX, mouseY)) {
                     doDrag = false;
+                }
             }
         }
 

@@ -16,9 +16,9 @@ public abstract class ModuleRenderer extends Module {
         component = new UIDraggableComponent(x, y, getWidth(), getHeight());
     }
 
-    public abstract void drawOnScreen();
+    public abstract void drawInGame();
 
-    public abstract void drawInGame(int mouseX, int mouseY);
+    public abstract void drawOnScreen(int mouseX, int mouseY);
 
     public abstract int getWidth();
 

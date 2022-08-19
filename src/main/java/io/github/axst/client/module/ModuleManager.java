@@ -1,6 +1,7 @@
 package io.github.axst.client.module;
 
 import io.github.axst.client.module.misc.FPS;
+import io.github.axst.client.module.misc.FPS2;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -12,7 +13,10 @@ public class ModuleManager {
     private final List<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
-        addModule(new FPS());
+        addModule(
+                new FPS(),
+                new FPS2()
+        );
     }
 
     /**
@@ -26,7 +30,7 @@ public class ModuleManager {
 
     public void renderModules() {
         modules.forEach(mod -> {
-            if (mod.isEnabled() && mod instanceof ModuleRenderer) ((ModuleRenderer) mod).drawOnScreen();
+            if (mod.isEnabled() && mod instanceof ModuleRenderer) ((ModuleRenderer) mod).drawInGame();
         });
     }
 }

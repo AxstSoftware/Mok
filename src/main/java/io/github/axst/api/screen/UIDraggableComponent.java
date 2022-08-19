@@ -1,7 +1,10 @@
 package io.github.axst.api.screen;
 
+import io.github.axst.util.RenderUtilities;
 import lombok.Getter;
 import org.lwjgl.input.Mouse;
+
+import java.awt.*;
 
 @Getter
 public class UIDraggableComponent {
@@ -22,6 +25,11 @@ public class UIDraggableComponent {
     }
 
     public boolean isDraggingModule(int mouseX, int mouseY) {
+        boolean hovered = mouseX >= this.getX() && mouseX <= this.getX() + this.getWidthIn() && mouseY >= this.getY() && mouseY <= this.getY() + this.getHeightIn();
+        if (hovered) {
+            RenderUtilities.drawHollowRect(this.getX() - 2, this.getY() - 2, this.getWidthIn() + 3, this.getHeightIn() + 2, new Color(0, 204, 255, 152).getRGB());
+        } else
+            RenderUtilities.drawHollowRect(this.getX() - 2, this.getY() - 2, this.getWidthIn() + 3, this.getHeightIn() + 2, new Color(170, 170, 170, 100).getRGB());
         if (this.draggingModule) {
             this.x = mouseX + this.lastX;
             this.y = mouseY + this.lastY;

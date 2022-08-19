@@ -1,7 +1,11 @@
 package io.github.axst.util;
 
 import net.minecraft.client.renderer.GlStateManager;
+import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
+
+import static net.minecraft.client.gui.Gui.drawRect;
 import static org.lwjgl.opengl.GL11.*;
 
 public class RenderUtilities {
@@ -83,5 +87,69 @@ public class RenderUtilities {
         glPopAttrib();
         glLineWidth(1);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+    }
+
+    public static void drawHorizontalLine(int startX, int endX, int y, int color) {
+        if (endX < startX) {
+            int i = startX;
+            startX = endX;
+            endX = i;
+        }
+
+        drawRect(startX, y, endX + 1, y + 1, color);
+    }
+
+    public static void drawVerticalLine(int x, int startY, int endY, int color) {
+        if (endY < startY) {
+            int i = startY;
+            startY = endY;
+            endY = i;
+        }
+
+        drawRect(x, startY + 1, x + 1, endY, color);
+    }
+
+    public static void drawHollowRect(int x, int y, int w, int h, int color) {
+        drawHorizontalLine(x, x + w, y, color);
+        drawHorizontalLine(x, x + w, y + h, color);
+        drawVerticalLine(x, y + h, y, color);
+        drawVerticalLine(x + w, y + h, y, color);
+    }
+
+    public static void drawLines(float[] points, float thickness, Color colour, boolean smooth) {
+        GL11.glPushMatrix();
+        GL11.glDisable(3553);
+        GL11.glBlendFunc(770, 771);
+        if (smooth) {
+            GL11.glEnable(2848);
+        } else {
+            GL11.glDisable(2848);
+        }
+        GL11.glLineWidth(thickness);
+        GL11.glColor4f(colour.getRed() / 255.0F, colour.getGreen() / 255.0F, colour.getBlue() / 255.0F, colour.getAlpha() / 255.0F);
+        GL11.glBegin(1);
+        for (int i = 0; i < points.length; i += 2)
+            GL11.glVertex2f(points[i], points[i + 1]);
+        GL11.glEnd();
+        GL11.glEnable(2848);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GL11.glEnable(3553);
+        GL11.glPopMatrix();
+    }
+
+    public static void drawOutline(int x, int y, int width, int height, int thickness, int color) {
+        drawLine(x, x + width, y, thickness, color, false);
+        drawLine(x, x + width, y + height, thickness, color, false);
+
+        drawVerticalLine(x, y, y + height, thickness, color, false);
+        drawVerticalLine(x + width, y, y + height, thickness, color, false);
+    }
+
+    public static void drawVerticalLine(int x, int y, int y1, int thickness, int colour, boolean smooth) {
+        drawLines(new float[] { x, y, x, y1 }, thickness, new Color(colour, true), smooth);
+    }
+
+    public static void drawLine(int x, int x1, int y, int thickness, int colour, boolean smooth) {
+        drawLines(new float[] { x, y, x1, y }, thickness, new Color(colour, true), smooth);
     }
 }
