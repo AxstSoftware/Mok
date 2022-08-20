@@ -9,6 +9,7 @@ import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -35,9 +36,10 @@ public class UINotification extends GuiScreen {
             color = new Color(182, 36, 90);
         }
         ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-        CustomFontRenderer font = new CustomFontRenderer("font", 26.0F);
-        RenderUtilities.drawLine((int) (sr.getScaledWidth() / 2 - font.getWidth(getName()) + 2), (int) (sr.getScaledWidth() / 2 + font.getWidth(getName()) - 20), font.FONT_HEIGHT + 37, (int) 3.0F, getColor().getRGB(), true);
-        new UIRenderPictures((int) (sr.getScaledWidth() / 2 - font.getWidth(getName())) - 20, font.FONT_HEIGHT + 23, 16, 16, iconLocation).drawPicture();
+        CustomFontRenderer font = new CustomFontRenderer("font", 28.0F);
+        RenderUtilities.drawLine((int) (sr.getScaledWidth() / 2 - font.getWidth(getName()) + 2), ((sr.getScaledWidth() / 2) + getTime()), font.FONT_HEIGHT + 39, (int) 3.0F, getColor().getRGB(), true);
+        new UIRenderPictures((int) (sr.getScaledWidth() / 2 - font.getWidth(getName())) - 20, font.FONT_HEIGHT + 21, 16, 16, iconLocation).drawPicture();
+        GL11.glEnable(GL11.GL_BLEND);
         font.drawString(getName(), (sr.getScaledWidth() >> 1) - font.getWidth(getName()), font.FONT_HEIGHT + 20, -1);
         --time;
     }
@@ -64,6 +66,7 @@ public class UINotification extends GuiScreen {
                 while (iter.hasNext()) {
                     UINotification notification = iter.next();
                     notification.renderNotification();
+                    if (livingNotifications.size() > 1) iter.remove();
                     if (!notification.isLiving()) iter.remove();
                 }
             }

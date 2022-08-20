@@ -36,7 +36,7 @@ public class Mok {
                     .setName("Test")
                     .setDescription("Some Test")
                     .setNotifications(UINotification.NotificationType.INFO)
-                    .setTime(400)
+                    .setTime(40)
                     .build();
         }
     };
