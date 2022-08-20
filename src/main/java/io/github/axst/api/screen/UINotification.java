@@ -37,10 +37,13 @@ public class UINotification extends GuiScreen {
         }
         ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
         CustomFontRenderer font = new CustomFontRenderer("font", 28.0F);
-        RenderUtilities.drawLine((int) (sr.getScaledWidth() / 2 - font.getWidth(getName()) + 2), ((sr.getScaledWidth() / 2) + getTime()), font.FONT_HEIGHT + 39, (int) 3.0F, getColor().getRGB(), true);
-        new UIRenderPictures((int) (sr.getScaledWidth() / 2 - font.getWidth(getName())) - 20, font.FONT_HEIGHT + 21, 16, 16, iconLocation).drawPicture();
+        CustomFontRenderer font2 = new CustomFontRenderer("verdana", 18.0F);
+        GL11.glEnable(GL11.GL_LINE_SMOOTH);
+        RenderUtilities.drawLine((int) (sr.getScaledWidth() / 2 - font.getWidth(getName()) + 2), ((sr.getScaledWidth() / 2) + getTime()), font.FONT_HEIGHT + 47, (int) 3.0F, getColor().getRGB(), true);
+        new UIRenderPictures((int) (sr.getScaledWidth() / 2 - font.getWidth(getName())) - 20, font.FONT_HEIGHT + 27, 16, 16, iconLocation).drawPicture();
         GL11.glEnable(GL11.GL_BLEND);
         font.drawString(getName(), (sr.getScaledWidth() >> 1) - font.getWidth(getName()), font.FONT_HEIGHT + 20, -1);
+        font2.drawString(getDescription(), (sr.getScaledWidth() >> 1) - font2.getWidth(getDescription()) / 2, font2.FONT_HEIGHT + 34, new Color(255,255,255,120).getRGB());
         --time;
     }
 

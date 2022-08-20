@@ -29,12 +29,19 @@ public class Mok {
     private final LoggerUtilities logger = new LoggerUtilities();
     @EventLink
     public Listener<EventTick> someTest = event -> {
-        if (KeybindingsUtilities.TEST.isKeyDown()) {
+        if (KeybindingsUtilities.TEST.isPressed()) {
             Minecraft.getMinecraft().displayGuiScreen(new UIHudScreen());
             getLogger().sendLogMinecraft("test", LoggerUtilities.LogLevel.INFO);
             new UINotification.Builder()
                     .setName("Test")
                     .setDescription("Some Test")
+                    .setNotifications(UINotification.NotificationType.INFO)
+                    .setTime(40)
+                    .build();
+        } else if (KeybindingsUtilities.TEST2.isPressed()) {
+            new UINotification.Builder()
+                    .setName("Test2")
+                    .setDescription("Some Test2")
                     .setNotifications(UINotification.NotificationType.INFO)
                     .setTime(40)
                     .build();

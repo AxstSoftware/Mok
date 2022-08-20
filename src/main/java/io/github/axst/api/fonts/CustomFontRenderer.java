@@ -60,6 +60,8 @@ public class CustomFontRenderer {
     private Font getFontByName(final String name) throws IOException, FontFormatException {
         if (name.equalsIgnoreCase("font")) {
             return this.getFontFromInput("/assets/minecraft/mok/fonts/font.ttf");
+        } else if (name.equalsIgnoreCase("verdana")) {
+            return this.getFontFromInput("/assets/minecraft/mok/fonts/verdana.ttf");
         }
         return this.getFontFromInput("/assets/minecraft/mok/fonts/font.ttf");
     }
