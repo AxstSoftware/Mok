@@ -3,7 +3,6 @@ package io.github.axst.client.mixins;
 import io.github.axst.Mok;
 import io.github.axst.api.events.EventTick;
 import io.github.axst.client.minecraft.screen.SplashProgress;
-import lombok.SneakyThrows;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureManager;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +16,6 @@ public class MinecraftMixins {
     public void injectStartGame(CallbackInfo ci) {
         Mok.getInstance().startClient();
     }
-
 
     @Redirect(method = "startGame", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;drawSplashScreen(Lnet/minecraft/client/renderer/texture/TextureManager;)V"))
     private void showSplashScreen(Minecraft minecraft, TextureManager textureManagerInstance) {
@@ -35,9 +33,8 @@ public class MinecraftMixins {
         Mok.getInstance().getBus().post(event);
     }
 
-    @SneakyThrows
-    @ModifyConstant(method = "createDisplay()V", constant = @Constant(stringValue = "Minecraft 1.8.9"))
-    public String createDisplay(String constant) {
+    @ModifyArg(method = "createDisplay()V", at = @At(value = "INVOKE", target = "org/lwjgl/opengl/Display.setTitle (Ljava/lang/String;)V"))
+    public String createDisplay(String newTitle) {
         return Mok.getInstance().getName() + " " + Mok.getInstance().getVersion() + " " + Mok.getInstance().readCommit();
     }
 
