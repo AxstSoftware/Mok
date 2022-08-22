@@ -25,7 +25,8 @@ public class SplashProgress {
     private static ResourceLocation splash;
     private static CustomFontRenderer ufr;
 
-    private SplashProgress() {}
+    private SplashProgress() {
+    }
 
     public static void update() {
         if (mc == null || mc.getLanguageManager() == null) {

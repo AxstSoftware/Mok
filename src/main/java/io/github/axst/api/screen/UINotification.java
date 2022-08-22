@@ -43,7 +43,7 @@ public class UINotification extends GuiScreen {
         new UIRenderPictures((int) (sr.getScaledWidth() / 2 - font.getWidth(getName())) - 20, font.FONT_HEIGHT + 27, 16, 16, iconLocation).drawPicture();
         GL11.glEnable(GL11.GL_BLEND);
         font.drawString(getName(), (sr.getScaledWidth() >> 1) - font.getWidth(getName()), font.FONT_HEIGHT + 20, -1);
-        font2.drawString(getDescription(), (sr.getScaledWidth() >> 1) - font2.getWidth(getDescription()) / 2, font2.FONT_HEIGHT + 34, new Color(255,255,255,120).getRGB());
+        font2.drawString(getDescription(), (sr.getScaledWidth() >> 1) - font2.getWidth(getDescription()) / 2, font2.FONT_HEIGHT + 34, new Color(255, 255, 255, 120).getRGB());
         --time;
     }
 

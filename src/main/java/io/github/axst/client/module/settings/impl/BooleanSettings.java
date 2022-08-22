@@ -6,7 +6,8 @@ import lombok.Setter;
 
 public class BooleanSettings extends Settings {
 
-    @Setter @Getter
+    @Setter
+    @Getter
     public boolean enabled;
 
     public BooleanSettings(String name, boolean enable) {

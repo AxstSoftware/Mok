@@ -13,12 +13,12 @@ import java.util.List;
 public class Module {
 
     private final String name;
+    private final List<Settings> settings = new ArrayList<>();
+    private final Minecraft mc = Minecraft.getMinecraft();
     @Setter
     private boolean enabled;
-
-    private final List<Settings> settings = new ArrayList<>();
-
-    private final Minecraft mc = Minecraft.getMinecraft();
+    @Setter
+    private boolean favourite;
 
     public Module(String name) {
         this.name = name;

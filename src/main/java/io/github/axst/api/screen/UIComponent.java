@@ -11,11 +11,9 @@ public abstract class UIComponent {
     private final int y;
     private final int width;
     private final int height;
-
+    private final Minecraft mc;
     @Setter
     public boolean visible = true;
-
-    private final Minecraft mc;
 
     protected UIComponent(int x, int y, int width, int height) {
         this.x = x;
